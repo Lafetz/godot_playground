@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://wf6yrhb08ofy"]
+
+[ext_resource type="Script" path="res://scenes/bird.gd" id="1_64che"]
+[ext_resource type="Texture2D" uid="uid://ctrg3f3wcgg3l" path="res://bird_sprite/bluebird-downflap.png" id="3_3cno5"]
+[ext_resource type="Texture2D" uid="uid://dmjhixhg6ulu" path="res://bird_sprite/bluebird-midflap.png" id="4_ja4wc"]
+[ext_resource type="Texture2D" uid="uid://c7huh5c1wbt1l" path="res://bird_sprite/bluebird-upflap.png" id="4_ktbwl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28fih"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ktbwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3cno5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ja4wc")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ktbwl")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j60v1"]
+radius = 12.0
+
+[node name="bird" type="CharacterBody2D"]
+script = ExtResource("1_64che")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_28fih")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_j60v1")

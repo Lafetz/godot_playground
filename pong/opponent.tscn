@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ju7xxye1lyhx"]
+
+[ext_resource type="Texture2D" uid="uid://dpk3bt4arsgja" path="res://arts/Computer.png" id="1_nv17i"]
+[ext_resource type="Script" path="res://opponent.gd" id="2_dmqnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5j2e"]
+size = Vector2(38.7598, 200)
+
+[node name="opponent" type="CharacterBody2D"]
+script = ExtResource("2_dmqnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 1
+position = Vector2(4.83514, 4.62493)
+scale = Vector2(-1.98134, 1.66875)
+texture = ExtResource("1_nv17i")
+region_rect = Rect2(0, 0, 100, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_o5j2e")

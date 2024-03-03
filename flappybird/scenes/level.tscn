@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb320j4pmiu0b"]
+
+[ext_resource type="Texture2D" uid="uid://j2vmnbvdaw1h" path="res://sprites/background-day.png" id="1_boji3"]
+[ext_resource type="PackedScene" uid="uid://wf6yrhb08ofy" path="res://scenes/bird.tscn" id="1_i5fd3"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_xaj6c"]
+[ext_resource type="PackedScene" uid="uid://b4lul28six2t0" path="res://scenes/ground.tscn" id="3_xlq42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1qx"]
+size = Vector2(114, 684)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_xaj6c")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(641, 327)
+scale = Vector2(4.44097, 1.28711)
+texture = ExtResource("1_boji3")
+region_rect = Rect2(100, 100, 4, 8)
+
+[node name="pipe_spawn" type="Marker2D" parent="."]
+position = Vector2(1286, 460)
+
+[node name="bird" parent="." instance=ExtResource("1_i5fd3")]
+z_index = 10
+position = Vector2(281, 322)
+
+[node name="pipe_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="rm_pipes_ground" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rm_pipes_ground"]
+position = Vector2(-67, 332)
+shape = SubResource("RectangleShape2D_ei1qx")
+
+[node name="ground" parent="." instance=ExtResource("3_xlq42")]
+position = Vector2(2, 610)
+
+[node name="scores" type="Label" parent="."]
+z_index = 100
+offset_right = 1280.0
+offset_bottom = 141.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "55"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="pipe_timer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="hit" from="ground" to="." method="_on_ground_hit"]

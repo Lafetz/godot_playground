@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsdews5e1h70e"]
+
+[ext_resource type="Texture2D" uid="uid://cuim5pwhn56xx" path="res://arts/Board.png" id="1_35nfb"]
+[ext_resource type="Script" path="res://level.gd" id="1_kj1sn"]
+[ext_resource type="PackedScene" uid="uid://d0orq54l34l47" path="res://player.tscn" id="2_5aifu"]
+[ext_resource type="PackedScene" uid="uid://cisvcq2kvbarr" path="res://ball.tscn" id="3_1cm2j"]
+[ext_resource type="PackedScene" uid="uid://ju7xxye1lyhx" path="res://opponent.tscn" id="4_hn720"]
+[ext_resource type="PackedScene" uid="uid://ds3tnvb131x3w" path="res://static_body_2d.tscn" id="5_7xaeu"]
+[ext_resource type="Texture2D" uid="uid://b0v60mdh1dyob" path="res://arts/ScoreBar.png" id="7_vnbf6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd6r7"]
+size = Vector2(62.5, 706)
+
+[node name="level" type="Node2D"]
+script = ExtResource("1_kj1sn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(639.625, 358.625)
+scale = Vector2(1.60754, 1.60714)
+texture = ExtResource("1_35nfb")
+
+[node name="player" parent="." instance=ExtResource("2_5aifu")]
+position = Vector2(40, 323)
+
+[node name="ball" parent="." instance=ExtResource("3_1cm2j")]
+position = Vector2(837, 302)
+
+[node name="opponent" parent="." instance=ExtResource("4_hn720")]
+position = Vector2(1240, 284)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_7xaeu")]
+position = Vector2(1273, -20)
+rotation = 1.5708
+scale = Vector2(1.60754, 1.60714)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_7xaeu")]
+position = Vector2(1273, 740)
+rotation = 1.5708
+scale = Vector2(1.60754, 1.60714)
+
+[node name="win" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
+position = Vector2(-39, 353)
+shape = SubResource("RectangleShape2D_xd6r7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="win"]
+position = Vector2(1315.75, 364)
+shape = SubResource("RectangleShape2D_xd6r7")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="opponent" type="Sprite2D" parent="Node"]
+position = Vector2(811, 27)
+texture = ExtResource("7_vnbf6")
+
+[node name="player" type="Sprite2D" parent="Node"]
+position = Vector2(470, 27)
+texture = ExtResource("7_vnbf6")
+flip_h = true
+
+[node name="playerScore" type="Label" parent="Node"]
+z_index = 1
+offset_left = 450.0
+offset_top = 2.0
+offset_right = 490.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="opponentScore" type="Label" parent="Node"]
+offset_left = 797.0
+offset_top = -2.0
+offset_right = 837.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[connection signal="body_entered" from="win" to="." method="_on_win_body_entered"]
