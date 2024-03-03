@@ -1,0 +1,13 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1709131814
+icon.svg::CompressedTexture2D::4497720857570856190::1709041246::1709041250::1::::<><>::
+pipe-green.png::CompressedTexture2D::8967835336959678271::1708524194::1709041471::1::::<><>::
+snake.gd::GDScript::-1::1709042358::0::1::::<>CharacterBody2D<>::
+snake.tscn::PackedScene::2137029129640379569::1709048860::0::1::::<><>::uid://b5cy2nbnu22xm::::res://icon.svg<>res://snake.gd
+wall.tscn::PackedScene::7221331509143994528::1709048860::0::1::::<><>::uid://d01c65cuvn12j::::res://pipe-green.png
+world.gd::GDScript::-1::1709126867::0::1::::<>Node2D<>::
+world.tscn::PackedScene::1057207016335118253::1709126867::0::1::::<><>::res://world.gd<>uid://dn45w5r8ntnd4::::res://Graphics/Snake_spritesheet.png<>uid://cskckt1l7jjgu::::res://Graphics/apple.png
+::res://Graphics/::1709043733
+apple.png::CompressedTexture2D::6057024660987449004::1605019345::1709043733::1::::<><>::
+grass.png::CompressedTexture2D::1573026662686775785::1605019345::1709043733::1::::<><>::
+Snake_spritesheet.png::CompressedTexture2D::8133446373970041983::1605019345::1709043733::1::::<><>::

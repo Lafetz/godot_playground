@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://pcebsetvrpjh"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_gkxht"]
+[ext_resource type="Texture2D" uid="uid://dn45w5r8ntnd4" path="res://Graphics/Snake_spritesheet.png" id="1_l66w4"]
+[ext_resource type="Texture2D" uid="uid://cskckt1l7jjgu" path="res://Graphics/apple.png" id="3_7hxn6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gc210"]
+texture = ExtResource("1_l66w4")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_khnmd"]
+texture = ExtResource("3_7hxn6")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n836o"]
+tile_size = Vector2i(40, 40)
+sources/0 = SubResource("TileSetAtlasSource_gc210")
+sources/1 = SubResource("TileSetAtlasSource_khnmd")
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_gkxht")
+
+[node name="snakeApple" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_n836o")
+format = 2
+
+[node name="snakeTick" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="snakeTick" to="." method="_on_snake_tick_timeout"]
